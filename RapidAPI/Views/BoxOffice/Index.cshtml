@@ -1,0 +1,26 @@
+﻿@model IEnumerable<BoxOfficeViewModel.Movie_Results>
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<h3>Bu Hafta Sinemadaki Filmler</h3>
+<br />
+@{
+    int count = 0;
+}
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Film Adı</th>
+        <th>Çıkış Yılı</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.title</td>
+            <td>@item.year</td>
+        </tr>
+    }
+</table>

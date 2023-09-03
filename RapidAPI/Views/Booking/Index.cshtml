@@ -1,0 +1,39 @@
+﻿@model List<BookingViewModel.Result>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card-header text-center">
+<form method="post">
+    <input type="text" name="cityName" placeholder="Şehir İsmi"  />
+    <button class="btn btn-dark append">Ara</button>
+
+</form>
+</div>
+@{
+    int count = 0;
+}
+
+   
+    <table class="table table-hover">
+        <tr>
+            <th>#</th>
+            <th>Otel Adı</th>
+            <th>Otel Puanı</th>
+            <th>Otel Değerlendirme</th>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+
+            <tr>
+                <th>@count</th>
+                <td><img src="@item.photoMainUrl" style="height:75px;width:75px" /> @item.name</td>
+                <td>@item.reviewScore</td>
+                <td>@item.reviewScoreWord</td>
+
+            </tr>
+        }
+    </table>
+

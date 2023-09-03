@@ -1,0 +1,34 @@
+﻿@model IEnumerable< ExchangeViewModel.Exchange_Rates>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    var kurlar = ViewBag.kurlar as SelectList;
+    int count = 0;
+}
+<form method="post">
+<select name="rate" asp-items="kurlar">
+    <option value="">Kur Seçiniz</option>
+</select>
+
+<button class="btn btn-outline-dark">Getir</button>
+</form>
+
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Döviz Kuru</th>
+        <th>Birim Fiyatı</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+    <tr>
+        <th>@count</th>
+        <td>@ViewBag.rate  @item.currency</td>
+        <td>@item.exchange_rate_buy</td>
+    </tr>
+    }
+</table>
