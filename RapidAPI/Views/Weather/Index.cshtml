@@ -1,0 +1,25 @@
+﻿@model WeatherViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Hava Durumu API</h3>
+<br />
+<table class="table table-hover">
+    <tr>
+        
+        <th>City</th>
+        <th>Temperature</th>
+        <th>Status</th>
+      
+    </tr>
+    <tr>
+      
+            <td>@Model.location.city</td>
+            <td>@Model.current_observation.condition.temperature C</td>
+            <td>@Model.current_observation.condition.text</td>
+          
+        
+     
+    </tr>
+</table>
