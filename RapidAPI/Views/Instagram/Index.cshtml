@@ -1,0 +1,33 @@
+﻿@model InstagramViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<h3>Instagram Profil Bilgileri</h3>
+<br />
+@{
+    
+}
+<form method="post">
+    <label>Kullanıcı Adı</label>
+    <input type="text" name="userName" />
+    <button class="btn btn-dark">Ara</button>
+</form>
+
+
+<table class="table table-hover">
+    <tr>
+        <th>Ad Soyad</th>
+        <th>Kullanıcı Adı</th>
+        <th>Takipçi Sayısı</th>
+        <th>Takip Sayısı</th>
+    </tr>
+    
+        <tr>
+            <td> @Model.full_name</td>
+            <td> @Model.username</td>
+            <td>@Model.followers</td>
+            <td>@Model.following</td>
+        </tr>
+    
+</table>

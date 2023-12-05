@@ -1,0 +1,44 @@
+﻿@model List<MoviesSeriesViewModel.Search>
+@{
+    ViewData["Title"] = "Index";
+    var type = "";
+    int count = 0;
+}
+
+<br />
+<h3>Filmler ve Diziler</h3>
+<br />
+@{
+
+}
+<form method="post">
+    <label>Film veya Dizi İsmi</label>
+    <input type="text" name="title" />
+    <button class="btn btn-dark">Ara</button>
+</form>
+
+
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>     
+        <th>Çıkış Yılı</th>
+        <th>Puanı</th>
+        <th>Türü</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        if(item.type=="movie"){ type = "Film"; }if(item.type=="show"){ type = "Dizi"; } 
+
+    <tr>
+        <th>@count</th>
+        <td> @item.title</td>
+        <td> @item.year</td>
+        <td> @item.score</td>
+        <td> @type</td>
+       
+    </tr>
+    }
+</table>
+

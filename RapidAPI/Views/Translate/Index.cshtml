@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<h3>İngilizce Türkçe Çeviri</h3>
+<br />
+@{
+
+}
+<form method="post">
+    <label>Çeviri Metnini Yazın</label>
+    <br />
+    <input type="text" name="text" class="form-control" />
+    <br />
+    <button class="btn btn-dark">Çevir</button>
+</form>
+<br />
+<br />
+<label>Çeviri:</label>
+<br />
+<h4>@ViewBag.text</h4>

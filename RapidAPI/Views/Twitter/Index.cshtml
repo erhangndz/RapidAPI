@@ -1,0 +1,34 @@
+﻿@model TwitterViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<h3>Twitter Profil Bilgileri</h3>
+<br />
+@{
+
+}
+<form method="post">
+    <label>Kullanıcı Adı</label>
+    <input type="text" name="userName" />
+    <button class="btn btn-dark">Ara</button>
+</form>
+
+
+<table class="table table-hover">
+    <tr>
+        <th>İsim</th>
+        <th>Kullanıcı Adı</th>
+        <th>Takipçi Sayısı</th>
+        <th>Takip Sayısı</th>
+    </tr>
+
+    <tr>
+        <td> @Model.name</td>
+        <td> @Model.username</td>
+        <td>@Model.follower_count</td>
+        <td>@Model.following_count</td>
+    </tr>
+
+</table>
