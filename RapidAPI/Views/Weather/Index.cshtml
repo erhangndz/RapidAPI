@@ -8,9 +8,10 @@
 <table class="table table-hover">
     <tr>
         
-        <th>City</th>
-        <th>Temperature</th>
-        <th>Status</th>
+        <th>Şehir</th>
+        <th>Sıcaklık</th>
+        <th>Durum</th>
+        <th>Nemlilik Oranı</th>
       
     </tr>
     <tr>
@@ -18,6 +19,7 @@
             <td>@Model.location.city</td>
             <td>@Model.current_observation.condition.temperature C</td>
             <td>@Model.current_observation.condition.text</td>
+            <td>@Model.current_observation.atmosphere.humidity</td>
           
         
      
