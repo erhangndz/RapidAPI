@@ -1,0 +1,27 @@
+﻿@model List<Exchange2ViewModel.Exchange_Rates>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Kurlar </h3>
+@{
+    int count = 0;
+}
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Kur</th>
+        <th>Kur Oranı</th>
+    </tr>
+  @foreach (var item in Model)
+    {
+        
+    
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.currency</td>
+            <td>@item.exchange_rate_buy</td>
+        </tr>
+    }
+</table>

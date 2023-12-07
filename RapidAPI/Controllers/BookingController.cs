@@ -18,7 +18,7 @@ namespace RapidAPI.Controllers
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://booking-com.p.rapidapi.com/v2/hotels/search?order_by=popularity&adults_number=2&checkin_date=2023-09-27&filter_by_currency=TRY&dest_id=-1456928&locale=tr&checkout_date=2023-09-28&units=metric&room_number=1&dest_type=city&include_adjacency=true&page_number=0&children_ages=5%2C0&categories_filter_ids=class%3A%3A2%2Cclass%3A%3A4%2Cfree_cancellation%3A%3A1"),
+                RequestUri = new Uri("https://booking-com.p.rapidapi.com/v1/hotels/search?units=metric&dest_id=-145692&dest_type=city&room_number=1&checkin_date=2024-05-19&order_by=popularity&locale=tr&adults_number=2&checkout_date=2024-05-20&filter_by_currency=AED&page_number=0&children_number=2&children_ages=5%2C0&categories_filter_ids=class%3A%3A2%2Cclass%3A%3A4%2Cfree_cancellation%3A%3A1&include_adjacency=true"),
                 Headers =
     {
         { "X-RapidAPI-Key", "e782ab3024msh2e78af442950fd0p115136jsnc3dd0b8c5f54" },
@@ -30,7 +30,7 @@ namespace RapidAPI.Controllers
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<BookingViewModel>(body);
-                return View(values.results.ToList());
+                return View(values.result.ToList());
             }
 
         }
@@ -38,12 +38,12 @@ namespace RapidAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(string cityName,string destid)
         {
-
+            TempData["cityName"]=cityName;
             var client2 = new HttpClient();
             var request2 = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://booking-com.p.rapidapi.com/v1/hotels/locations?name={cityName}" + "&locale=tr"),
+                RequestUri = new Uri($"https://booking-com.p.rapidapi.com/v1/hotels/locations?name={cityName}"+ "&locale=tr"),
                 Headers =
     {
         { "X-RapidAPI-Key", "e782ab3024msh2e78af442950fd0p115136jsnc3dd0b8c5f54" },
@@ -63,7 +63,7 @@ namespace RapidAPI.Controllers
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://booking-com.p.rapidapi.com/v2/hotels/search?order_by=popularity&adults_number=2&checkin_date=2023-09-27&filter_by_currency=TRY&dest_id={destid}&locale=tr&checkout_date=2023-09-28&units=metric&room_number=1&dest_type=city&include_adjacency=true&page_number=0&children_ages=5%2C0&categories_filter_ids=class%3A%3A2%2Cclass%3A%3A4%2Cfree_cancellation%3A%3A1"),
+                RequestUri = new Uri($"https://booking-com.p.rapidapi.com/v1/hotels/search?units=metric&dest_id={destid}"+"&dest_type=city&room_number=1&checkin_date=2024-05-19&order_by=popularity&locale=tr&adults_number=2&checkout_date=2024-05-20&filter_by_currency=TRY&page_number=0&children_number=2&children_ages=5%2C0&categories_filter_ids=class%3A%3A2%2Cclass%3A%3A4%2Cfree_cancellation%3A%3A1&include_adjacency=true"),
                 Headers =
     {
         { "X-RapidAPI-Key", "e782ab3024msh2e78af442950fd0p115136jsnc3dd0b8c5f54" },
@@ -75,7 +75,7 @@ namespace RapidAPI.Controllers
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<BookingViewModel>(body);
-                return View(values.results.ToList());
+                return View(values.result.ToList());
             }
 
         }
